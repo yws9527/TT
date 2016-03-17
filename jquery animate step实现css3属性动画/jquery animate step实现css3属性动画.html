@@ -1,0 +1,656 @@
+<html xmlns:wb="http://open.weibo.com/wb"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
+<link rel="shortcut icon" href="http://www.phpvar.com/phpvar.com/wp-content/themes/forigi1.1/images/favicon.ico">
+<title>jquery animate step实现css3属性动画 | Phpvar's Blog</title>  
+<meta name="description" content="">
+<meta name="keywords" content="jquery animate step实现css3属性动画, jquery animate step用法, ">
+<!--必填-->
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.phpvar.com/archives/3356.html">
+<meta property="og:title" content="jquery animate step实现css3属性动画">
+<meta property="og:description" content="关注Web前端:DIV+CSS/JQuery/HTML5+CSS3，学习分享PHP、Smarty。
+phpvar's blog提供jquery,php,html5+css3,js,photoshop,
+wordpress,互联网资讯等阅读信息。">
+<!--选填-->
+<meta property="og:image" content="http://gravatar.duoshuo.com/avatar/b6a54de62d03acc26d2d0633646e289f?s=50">
+<meta name="weibo: article:create_at" content="文章的创建时间">
+<meta name="weibo: article:update_at" content="文章的更新时间">
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="comments.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Phpvar's BlogRSS Feed" href="http://www.phpvar.com/feed">
+<link rel="alternate" type="application/atom+xml" title="Phpvar's BlogAtom Feed" href="http://www.phpvar.com/feed/atom">
+<link rel="pingback" href="http://www.phpvar.com/phpvar.com/xmlrpc.php">
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script src="https://pagead2.googlesyndication.com/pub-config/r20160212/ca-pub-5711620247461684.js"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="pirobox.min.js"></script>
+<script type="text/javascript" src="jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="myscript.js"></script>
+<script type="text/javascript" src="comments-ajax.js"></script>
+<script src="wb.js" type="text/javascript" charset="utf-8"></script>
+<link rel="alternate" type="application/rss+xml" title="Phpvar's Blog » jquery animate step实现css3属性动画评论Feed" href="http://www.phpvar.com/archives/3356.html/feed">
+<link rel="stylesheet" id="gpp_gallery-css" href="style_2.css" type="text/css" media="all">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery-migrate.min.js"></script>
+<script type="text/javascript" src="jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="jquery.fader.js"></script>
+<script type="text/javascript" src="slideplayer.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.phpvar.com/phpvar.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.phpvar.com/phpvar.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="最新可正常使用google搜索的方法" href="http://www.phpvar.com/archives/3353.html">
+<link rel="next" title="广东警方推出20项公安改革惠民举措" href="http://www.phpvar.com/archives/3364.html">
+<meta name="generator" content="WordPress 3.8.13">
+<link rel="canonical" href="3356.html">
+<link rel="shortlink" href="http://www.phpvar.com/?p=3356">
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			var imgcount = 0;
+
+			$(".flexslider").flexslider({
+
+			     animation: "fade",
+			     animationDuration: 500,
+			     slideshowSpeed: 5000,
+			     pauseOnHover: true,
+			     controlNav: true,
+			     directionNav: true,
+			     manualControls: ".gpp_slideshow_thumbnails li a"
+
+			});
+		});
+	</script><script type="text/javascript">
+function runcode_open_new(element)
+{
+	var code='';
+	code+= document.getElementById(element).value;
+	var win = window.open("http://www.phpvar.com/demo-page"+"#ThisIsADemo#"+element, "", "");
+	//win.opener = null;
+	//win.document.write(code);
+	//win.document.getElementById("post_content").innerHTML=code;//无法更改线上新打开页面标签里面的内容！改成在新打开页面中控制
+	//win.document.close();
+}
+function saveCode(obj,filename)
+{
+	if(!document.all){alert("您的浏览器不支持此方法。");	return;
+	}
+    var winname = window.open("", "", "top=10000,left=10000");
+    winname.document.open("text/html", "replace");
+    winname.document.write(document.getElementById(obj).value);
+    winname.document.execCommand("saveas", "", filename + ".htm");
+    winname.close();
+}
+function runcode_copy(element)
+{
+	var codeobj = document.getElementById(element);
+	var meintext = codeobj.value;
+	try {
+	 if (window.clipboardData)
+	   {
+	  
+	   // the IE-manier
+	   window.clipboardData.setData("Text", meintext);
+	  
+	   // waarschijnlijk niet de beste manier om Moz/NS te detecteren;
+	   // het is mij echter onbekend vanaf welke versie dit precies werkt:
+	   }
+	   else if (window.netscape)
+	   {
+	  
+	   // dit is belangrijk maar staat nergens duidelijk vermeld:
+	   // you have to sign the code to enable this, or see notes below
+	   netscape.security.PrivilegeManager.enablePrivilege('UniversalXPConnect');
+	  
+	   // maak een interface naar het clipboard
+	   var clip = Components.classes['@mozilla.org/widget/clipboard;1']
+					 .createInstance(Components.interfaces.nsIClipboard);
+	   if (!clip) return;
+	  
+	   // maak een transferable
+	   var trans = Components.classes['@mozilla.org/widget/transferable;1']
+					  .createInstance(Components.interfaces.nsITransferable);
+	   if (!trans) return;
+	  
+	   // specificeer wat voor soort data we op willen halen; text in dit geval
+	   trans.addDataFlavor('text/unicode');
+	  
+	   // om de data uit de transferable te halen hebben we 2 nieuwe objecten
+	   // nodig om het in op te slaan
+	   var str = new Object();
+	   var len = new Object();
+	  
+	   var str = Components.classes["@mozilla.org/supports-string;1"]
+					.createInstance(Components.interfaces.nsISupportsString);
+	  
+	   var copytext=meintext;
+	  
+	   str.data=copytext;
+	  
+	   trans.setTransferData("text/unicode",str,copytext.length*2);
+	  
+	   var clipid=Components.interfaces.nsIClipboard;
+	  
+	   if (!clip) return false;
+	  
+	   clip.setData(trans,null,clipid.kGlobalClipboard);
+	  
+	   }
+	} catch (e) {alert('因为安全策略的原因，此项功能已被您的浏览器禁止。关闭此窗口，然后按下“Ctrl+C”组合键完成复制。');		codeobj.focus();
+	}
+	codeobj.select();
+   return false;
+}
+</script><style type="text/css">
+/*google自定义搜索*/
+/*(google搜索框加载过慢，弃用！)使用自带搜索框，样式美化*/
+#ggsearch{width:288px;padding:5px;}
+#ggsearch input[type='text']{ width: 206px;padding: 5px;color:#bbb;}
+#ggsearch input[type='text'].ifocus{color:#222;}
+#ggsearch input[type='submit']{ cursor:pointer;background:none repeat scroll 0 0 #4589F2;border:1px solid #4363AE;border-radius:2px 2px 2px 2px;color:#FFFFFF;font-size:13px;font-weight:700;height:28px;width:62px; text-shadow:none;}
+/*google自定义搜索结果页面*/
+.cse .gsc-control-cse, .gsc-control-cse{padding:0!important;}
+.gsc-result-info{ padding: 0!important;}
+.gsc-above-wrapper-area{ padding-top: 0!important;}
+.gsc-control-cse-zh_CN .gs-snippet b, .gsc-control-cse-zh_CN .gs-promotion em, .gsc-control-cse-zh_TW .gs-snippet b, .gsc-control-cse-zh_TW .gs-promotion em,.gs-webResult.gs-result a.gs-title b,.gs-imageResult a.gs-title:hover b{color:#f00!important;font-weight:bold!important;}
+</style>
+<style>body{background-position: center top;}</style>
+<!-- 在 header.php 文件的 head 标签中添加下列代码，声明类型为 style -->
+<script type="text/javascript" async="" charset="UTF-8" src="http://static.duoshuo.com/embed.js"></script><script src="http://bdimg.share.baidu.com/static/js/logger.js?cdnversion=404945"></script><script src="http://bdimg.share.baidu.com/static/js/like.js?cdnversion=404945"></script><link href="http://bdimg.share.baidu.com/static/css/like.css?cdnversion=20121228" rel="stylesheet" type="text/css"><link href="http://bdimg.share.baidu.com/static/css/bdsstyle.css?cdnversion=20131219" rel="stylesheet" type="text/css"><link href="http://bdimg.share.baidu.com/static/css/like.css?cdnversion=20121228" rel="stylesheet" type="text/css"><link href="http://bdimg.share.baidu.com/static/css/bdsstyle.css?cdnversion=20131219" rel="stylesheet" type="text/css"></head>
+<body class="bg1"><iframe frameborder="0" style="display: none;"></iframe><iframe frameborder="0" style="display: none;"></iframe>
+<!--[if lt IE 7]>
+<div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>
+	<div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'>
+		<a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'>
+			<img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/>
+		</a>
+	</div>
+	<div style='width: 840px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>
+		<div style='width: 75px; float: left;'>
+			<img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg' alt='Warning!'/>
+		</div>
+		<div style='width: 375px; float: left; font-family: Arial, sans-serif;'>
+			<div style='font-size: 13px; font-weight: bold; margin-top: 12px;'>您当前使用的 IE6 浏览器已经比较落后了！</div>
+			<div style='font-size: 12px; margin-top: 2px; line-height: 18px;'>使用Chrome、Firefox或IE10等现代浏览器浏览本站，可以获得更好的浏览效果，请先升级您正在使用的浏览器！！！</div>
+		</div>
+		<div style='width: 75px; float: left;'>
+			<a href='http://www.firefox.com' target='_blank'>
+				<img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/>
+			</a>
+		</div>
+		<div style='width: 75px; float: left;'>
+			<a href='http://www.browserforthebetter.com/download.html' target='_blank'>
+				<img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg' style='border: none;' alt='Get Internet Explorer 8'/>
+			</a>
+		</div>
+		<div style='width: 73px; float: left;'>
+			<a href='http://www.apple.com/safari/download/' target='_blank'>
+				<img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/>
+			</a>
+		</div>
+		<div style='float: left;'>
+			<a href='http://www.google.com/chrome' target='_blank'>
+				<img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/>
+			</a>
+		</div>
+	</div>
+</div><![endif]-->
+		<div id="wrapper">
+			<div id="navigation">
+				<div class="w99">
+										<ul id="topnav" class="menu"><li id="menu-item-3118" class="bg_s menu-item menu-item-type-post_type menu-item-object-page menu-item-3118"><a title="点我试试，百度谷歌一起搜" target="_blank" href="http://www.phpvar.com/s">百度谷歌一起搜，码农必备，快来试试吧</a></li>
+</ul>										
+					<p class="fr skin-tips" style="display: block;"><span style="cursor:pointer;" onclick="javascript:showSkinBanner();">想换背景皮肤？<span style="color:#f00;">鼠标戳下这里试试</span>！！</span></p>
+					<!-- topsearch end -->
+					<div class="blog_loading" style="width: 100%; display: none;"></div>
+					<div class="cl"></div>
+				</div>
+				<!-- container end 作用:定位nav-->
+			</div>
+			<!-- navigation end -->
+			<div id="container">
+				<div id="header">
+					<div id="siteinfo">
+						<a href="javascript:;" class="btn-navbar" title="显示导航栏"><span class="bn-inner"></span></a>
+																		<div id="site_title">
+							<a href="http://www.phpvar.com/" title="Phpvar's Blog" rel="home">
+								Phpvar's Blog</a>
+						</div>
+						<p id="site_description">
+							{WEB前端技术分享，PHP编程学习,关注互联网动态}</p>
+												</div>
+					<!-- siteinfo end -->
+					<div id="topbanner">
+												<div class="skin-item">
+							<a href="javascript:;" class="item01 item-select" title="随机背景皮肤"></a>
+							<a href="javascript:;" class="item02" title="选择第2款背景皮肤"></a>
+							<a href="javascript:;" class="item03" title="选择第3款背景皮肤"></a>
+							<a href="javascript:;" class="item04" title="选择第4款背景皮肤"></a>
+							<a href="javascript:;" class="item05" title="选择第5款背景皮肤"></a>
+							<a href="javascript:;" class="item06" title="选择第6款背景皮肤"></a>
+						</div>
+						<script>
+								var skinFlag="";
+								$(".skin-item >a").each(function(i, obj) {
+									$(this).click(function() {
+										skinFlag=i + 1;
+										$(this).addClass("item-select").siblings("a").removeClass("item-select");
+										$("body").attr("class", "bg" +skinFlag);
+										if(skinFlag==1){
+											eraseCookie("skin");
+											$(".skin-tips").html("↓↓选择一款你喜欢的背景皮肤吧！↓↓");
+											randomBg();
+										}else{
+										 createCookie("skin", skinFlag, 30);
+										 $(".skin-tips").html("↓↓你已选中第<b>"+skinFlag+"</b>款背景皮肤，可随时更换哦！↓↓");
+										}
+									})
+								})
+								favSkin=readCookie("skin");
+								if(favSkin){
+									$(".skin-tips").html("↓↓你已选中第<b>"+favSkin+"</b>款背景皮肤，可随时更换哦！↓↓");
+									$(".item0"+favSkin).addClass("item-select").siblings("a").removeClass("item-select");
+									$("body").attr("class", "bg" + favSkin);
+								}
+							// 显示其它时，切换至显示背景皮肤
+								function showSkinBanner(){
+									$(".faqAd,.ggBanner").hide();
+									$(".skin-item").fadeIn();
+									if(favSkin){
+										$(".skin-tips").html("↓↓你已选中第<b>"+favSkin+"</b>款背景皮肤，可随时更换哦！↓↓");
+									}else{
+										randomBg();
+										$(".skin-tips").html("↓↓选择一款你喜欢的背景皮肤吧！↓↓");
+									}
+								}
+							// cookie functions http://www.quirksmode.org/js/cookies.html
+							function createCookie(name,value,days) {
+								if (days) {
+									var date = new Date();
+									date.setTime(date.getTime()+(days*24*60*60*1000));
+									var expires = "; expires="+date.toGMTString();
+								}
+								else var expires = "";
+								document.cookie = name+"="+value+expires+"; path=/";
+							}
+
+							function readCookie(name) {
+								var nameEQ = name + "=";
+								var ca = document.cookie.split(';');
+								for(var i=0;i < ca.length;i++) {
+									var c = ca[i];
+									while (c.charAt(0)==' ') c = c.substring(1,c.length);
+									if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+								}
+								return null;
+							}
+
+							function eraseCookie(name) {
+								createCookie(name,"",-1);
+							}
+						</script>
+						<script type="text/javascript">
+Math.randomAt=function(floorNum,ceilNum){
+			 //alert(arguments.length);
+			num=parseInt(Math.random()*(ceilNum-floorNum+1)+floorNum);	 
+			return num;
+		   };
+var jsIndex=Math.randomAt(0,1);
+var skinTxt="<script>$('.skin-tips').html('<span style=\"cursor:pointer;\" onclick=\"javascript:showSkinBanner();\">想换背景皮肤？<span style=\"color:#f00;\">鼠标戳下这里试试</span>！！</span>').fadeIn()<\/script>";
+
+jsad2+=skinTxt;
+
+var skinBanner="";//输出换肤标签标识实际换肤内容页面中输出
+
+var jsArr=[skinBanner,jsad2];
+</script>
+<script type="text/javascript">
+document.write(jsArr[jsIndex]);
+</script><script>$('.skin-tips').html('<span style="cursor:pointer;" onclick="javascript:showSkinBanner();">想换背景皮肤？<span style="color:#f00;">鼠标戳下这里试试</span>！！</span>').fadeIn()</script><script>$('.skin-tips').html('<span style="cursor:pointer;" onclick="javascript:showSkinBanner();">想换背景皮肤？<span style="color:#f00;">鼠标戳下这里试试</span>！！</span>').fadeIn()</script><script>$('.skin-tips').html('<span style="cursor:pointer;" onclick="javascript:showSkinBanner();">想换背景皮肤？<span style="color:#f00;">鼠标戳下这里试试</span>！！</span>').fadeIn()</script><script>$('.skin-tips').html('<span style="cursor:pointer;" onclick="javascript:showSkinBanner();">想换背景皮肤？<span style="color:#f00;">鼠标戳下这里试试</span>！！</span>').fadeIn()</script><script>$('.skin-tips').html('<span style="cursor:pointer;" onclick="javascript:showSkinBanner();">想换背景皮肤？<span style="color:#f00;">鼠标戳下这里试试</span>！！</span>').fadeIn()</script>						</div>
+					<!-- topbanner end -->
+					<div id="navigation2" style="border-bottom-color: rgb(238, 0, 0);">
+												<ul id="topnav2" class="menu"><li id="menu-item-1518" class="home menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1518"><a title="首页" href="http://www.phpvar.com">首页</a></li>
+<li id="menu-item-1510" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-1510"><a href="http://www.phpvar.com/archives/category/frontend">前端技术</a>
+<ul class="sub-menu" style="display: none;">
+	<li id="menu-item-1513" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1513"><a href="http://www.phpvar.com/archives/category/frontend/xhtml-css">XHTML+CSS</a></li>
+	<li id="menu-item-1511" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1511"><a href="http://www.phpvar.com/archives/category/frontend/js-jquery">JS+jQuery</a></li>
+	<li id="menu-item-1512" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1512"><a href="http://www.phpvar.com/archives/category/frontend/photoshop">Photoshop</a></li>
+</ul>
+</li>
+<li id="menu-item-1502" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1502"><a href="http://www.phpvar.com/archives/category/wordpress">WordPress</a>
+<ul class="sub-menu" style="display: none;">
+	<li id="menu-item-1503" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1503"><a href="http://www.phpvar.com/archives/category/wordpress/themes">wordpress主题</a></li>
+	<li id="menu-item-1505" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1505"><a href="http://www.phpvar.com/archives/category/wordpress/plugins">WordPress插件</a></li>
+	<li id="menu-item-1504" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1504"><a href="http://www.phpvar.com/archives/category/wordpress/faq">WordPress常见问题</a></li>
+</ul>
+</li>
+<li id="menu-item-1514" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1514"><a href="http://www.phpvar.com/archives/category/program">网站开发</a>
+<ul class="sub-menu" style="display: none;">
+	<li id="menu-item-1516" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1516"><a href="http://www.phpvar.com/archives/category/program/php">PHP编程</a></li>
+	<li id="menu-item-1515" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1515"><a href="http://www.phpvar.com/archives/category/program/mysql-phpmyadmin">PhpMyAdmin</a></li>
+</ul>
+</li>
+<li id="menu-item-1508" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1508"><a title="电脑&amp;安卓软件推荐" href="http://www.phpvar.com/archives/category/internet/pc-android">电脑&amp;安卓</a></li>
+<li id="menu-item-1509" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1509"><a title="音乐&amp;视频分享" href="http://www.phpvar.com/archives/category/internet/videoshare">音乐&amp;视频</a></li>
+<li id="menu-item-1853" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1853"><a title="你问我答-前端技术分享论坛！" href="http://www.phpvar.com/bbs">前端论坛</a></li>
+<li id="menu-item-1517" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1517"><a href="http://www.phpvar.com/guestbook">留言板</a>
+<ul class="sub-menu" style="display: none;">
+	<li id="menu-item-2670" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2670"><a title="说说墙-想说就说" href="http://www.phpvar.com/mood">说说墙-想说就说</a></li>
+	<li id="menu-item-1801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1801"><a title="友情链接–前端技术分享" href="http://www.phpvar.com/links">友情链接,发现了…</a></li>
+</ul>
+</li>
+</ul>												<div class="cl"></div>
+					</div>
+					<!-- navigation end -->
+					<div class="blog_loading" style="width: 100%; display: none;"></div>
+					<div class="cl"></div>
+				</div>
+				<!-- header end -->
+				<div id="breadcrumbs">
+<span><script type="text/javascript">
+var today=new Date(),
+hello="",
+hour=new Date().getHours();
+if(hour < 6)hello='  凌晨好, '
+else if(hour < 9)hello=' 早上好, '
+else if(hour < 12)hello=' 上午好, '
+else if(hour < 14)hello=' 中午好, '
+else if(hour < 17)hello=' 下午好, '
+else if(hour < 19)hello=' 傍晚好, '
+else if(hour < 22)hello=' 晚上好, '
+else {hello='夜深了, '}
+var webUrl = webUrl;
+document.write(' '+hello);
+</script>   凌晨好,    凌晨好,    凌晨好,    凌晨好,    凌晨好, 
+
+欢迎访问！&nbsp;2016年3月13日&nbsp;星期日<b id="hms">&nbsp;1:14:34</b>
+<script type="text/javascript">
+//js获取时分秒
+function hms(){
+var timer=new Date(),
+h=timer.getHours(),
+m=timer.getMinutes(),
+s=timer.getSeconds();
+m=m<10?"0"+m:m;
+s=s<10?"0"+s:s;
+document.getElementById("hms").innerHTML="&nbsp;"+h+":"+m+":"+s;
+setTimeout(hms,1000);
+}
+hms();
+</script>
+
+
+</span>
+当前位置&nbsp;:&nbsp;<a href="http://www.phpvar.com" title="首页">首页</a>&nbsp;»
+		<a href="http://www.phpvar.com/archives/category/frontend/js-jquery" title="查看JS+jQuery中的全部文章">JS+jQuery</a> »jquery animate step实现css3属性动画<div class="cl"></div>
+</div>
+<script type="text/javascript" src="http://www.phpvar.com/archives/ZeroClipboard.js"></script>
+<style type="text/css">
+.post_meta, #page_error, .bd { overflow: visible; }
+
+/*文章页面通用格式*/
+.description h3{margin-bottom:10px;padding: 3px;border-left: 5px solid #666;background: #F8F8F8;}
+.description p{padding-bottom:5px;}
+.description strong{color:#080; border-bottom:1px dotted;}
+.description b{color:#7A7676;}
+</style>
+<script type="text/javascript">
+$(function(){
+//实例描述文字前加序号标示!	
+$(".description >h3").each(function(index, element) {
+	var $index=index+1;
+	$(this).prepend("<b style='color:#666;'>"+$index+"、</b>");
+});
+})
+</script>
+
+<div id="content">
+  <div id="post_entry">
+            <div class="post_meta">
+      <div class="post_info">
+        <div class="post_comments">
+          <a href="3356.html#comments" rel="nofollow" class="ds-thread-count" data-thread-key="3356" title="《jquery animate step实现css3属性动画》上的评论">3 条评论</a>        </div>
+        <div class="post_date" title="发布日期">
+          <div class="year_month">
+            2015          </div>
+          <div class="day"> <span>
+            6            </span>.<span>
+            27            </span> </div>
+        </div>
+        <!-- post date end -->
+        <h1>jquery animate step实现css3属性动画</h1>
+        <div class="post_admin"> 分类:
+          <a href="http://www.phpvar.com/archives/category/frontend/js-jquery" title="查看JS+jQuery中的全部文章" rel="category tag">JS+jQuery</a>, <a href="http://www.phpvar.com/archives/category/frontend" title="查看前端相关中的全部文章" rel="category tag">前端相关</a>                                                  | 发表于
+          2015-06-27           | 浏览(2496)&nbsp;
+                  </div>
+        <div class="text_size"> 字体：<span class="text_large" title="点击调节字体">大</span> <span class="text_middle" title="点击调节字体">中</span> <span class="text_small" title="点击调节字体" style="color: rgb(164, 0, 0);">小</span> </div>
+        <!-- text size end -->
+        <div class="cl"></div>
+      </div>
+      <!-- post info end -->
+      <div class="post_content">
+        <div class="post_content_text clearfix">
+                        <!--非管理员登录，文章头部插入广告-->
+                                                                             <p>jquery animation的工作原理是通过将元素的css样式从一个状态改变为另一个状态。css属性值是逐渐改变的，这样就可以创建动画效果。</p>
+<p>但是animate方法下，只有数字值可创建动画（比如 “top:30px”），字符串值类型的值则是无法创建动画（比如 “background-color:red”）。而工作中我们遇到的更多是想通过jquery animate来控制 css3属性，而css3好多效果因为不是数值的，所以是没有办法直接通过animate()开发方法 实现的。如translate(), rotate(), scale(), skew(),等开发方法 ，这些开发方法 的一个特点就是它们的值是字符和数字混合在一起，如：rotate(360deg);</p>
+<p>还好animate()方法有个stp参数规定动画执行的每一步都要执行step这个回调函数。我们可以用使用一个不影响元素效果显著的css值来触发animate()开发方法 ，然后在step回调函数中修改我们想要修改的值，这样就可以间接地实现动画了，实例：</p>
+<div class="runcode">
+<p><textarea name="runcode" style="overflow-y: visible; width: 620px; font-size: 13px; height: 432px;" class="runcode_text" id="runcode_I8lIMa">&lt;style&gt;
+	.demo{width: 200px;height: 200px;border: 1px solid #f00;}
+&lt;/style&gt;
+&lt;div class="demo"&gt;
+	jquery animate控制 css3属性
+&lt;/div&gt;
+&lt;script&gt;
+	$(".demo").animate({
+		deg: 360
+	}, {
+		step: function(n, fx) {
+			console.log(n);
+			$(this).css("transform", "rotate(" + n + "deg)");
+		},
+		duration:2000
+	});
+&lt;/script&gt;
+</textarea></p>
+<script type="text/javascript">function changeTsize(){document.getElementById("runcode_I8lIMa").style.height = document.getElementById("runcode_I8lIMa").scrollHeight + "px";}window.setTimeout(changeTsize,0);</script><div class="pre_tips" style="display: none;">单击展开,方便编辑代码</div></div><p><input type="button" value="运行" class="runcode_button" onclick="runcode_open_new('runcode_I8lIMa');"> <input type="button" value="复制" class="runcode_button copyit" onclick="runcode_copy('runcode_I8lIMa');"> <input type="button" value="另存代码" class="runcode_button" onclick="saveCode('runcode_I8lIMa','runcode_I8lIMa');"> <span style="color:#f00;">提示：</span>你可以先修改部分代码再运行。</p>
+
+
+<p>运行可看到动画效果，对于step这个关键参数的用法，可看下面的相关注释，网上的介绍几乎没有，纯属个人见解：</p>
+<pre>&lt;script&gt;
+	$(".demo").animate({
+		first:2,
+		second:10
+	}, {
+		step:function(n,fx){
+			// 动画元素的每个动画属性每一次动画效果的执行都将调用的函数。第1个参数是当前动画正在改变的属性的实时值（每1次动画过程中，属性值的实时反馈呈现）；第2个参数为修改Tween 对象提供了一个机会来改变animate第1个参数中设置的属性在动画结束时的值。
+			// fx: jQuery.fx 原型对象的一个引用,其中包含了多项属性,比如
+			// 执行动画的元素：elem;
+			// 动画正在改变的属性：prop;
+			// 正在改变属性的当前值：now;
+			// 正在改变属性的结束值：end;
+			// 正在改变属性的单位：unit;等
+			
+			// 可在这里改变animate第1个参数中设置的属性second在动画结束时的值
+			if(fx.prop=="second"){fx.end=5}
+			console.log(fx.prop+": "+n);
+		},
+		duration:2000
+	})
+&lt;/script&gt;
+<div class="pre_tips" style="display: none;">单击展开代码,方便阅读</div></pre><p></p>
+
+	
+          		            <!--非管理员登录，文章头部插入广告-->
+          
+                    <div class="comment_pic">
+          	<span>快速评论：</span>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic6.png" width="80" height="40" alt="哥路过，打酱油滴！"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic3.png" width="80" height="40" alt="涨姿势啦！"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic4.png" width="80" height="40" alt="不明觉厉"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic7.png" width="80" height="40" alt="贱人就是矫情"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic2.png" width="80" height="40" alt="内容很赞，受益匪浅！"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic5.png" width="80" height="40" alt="朕知道了"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic1.png" width="80" height="40" alt="留个脚印，证明哥来过！"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic8.png" width="80" height="40" alt="喵了个咪的，瞎扯蛋啊！"></a>
+          	<a href="javascript:;"><img src="http://www.phpvar.com/archives/comment_pic9.png" width="80" height="40" alt="卖萌可耻，么么哒！"></a>
+          </div>
+        </div>
+        <!--<link href="http://www.phpvar.com/phpvar.com/wp-content/themes/forigi1.1/css/share.css" rel="stylesheet" type="text/css" />-->
+
+
+
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=449311" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=404945"></script>
+
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+<!-- 将此代码放在适当的位置，建议在body结束前 -->
+<script id="bdlike_shell" src="http://bdimg.share.baidu.com/static/js/like_shell.js?t=404946"></script>
+<script>
+var bdShare_config = {
+	"type":"small",
+	"color":"blue",
+	"uid":"449311",
+	"likeText":"赞一个！",
+	"likedText":"已赞过！"
+};
+document.getElementById("bdlike_shell").src="http://bdimg.share.baidu.com/static/js/like_shell.js?t=" + Math.ceil(new Date()/3600000);
+</script>
+
+<script type="text/javascript">
+$(function(){
+	var shareCSS='<link href="http://www.phpvar.com/archives/share.css" rel="stylesheet" type="text/css" />';
+	$(shareCSS).appendTo("body");
+})
+</script>
+        <!-- 上下篇 -->
+        
+        <div class="cl"></div>
+      </div>
+      <!-- post content end --> 
+    </div>
+    <!-- post meta end --> 
+  </div>
+  <!-- post entry end --> 
+  <!-- 调用相关文章 -->
+  <!-- 版权信息 -->
+
+<!-- related content -->
+
+<a name="SaySomething"></a>
+    
+  </div>
+<!-- content end -->
+
+<!-- sidebar end -->
+<script type="text/javascript">
+//复制功能
+var clip = null;
+function copyThis() {
+	if($.browser.version==6.0){
+		//针对ie6
+		$('.copyit').live("click",function(){
+		var code=$(this).parent("p").siblings(".runcode").find("textarea").text();
+		window.clipboardData.setData("Text",code);
+	   })
+	   return;
+	}
+	ZeroClipboard.setMoviePath("http://www.phpvar.com/phpvar.com/wp-content/uploads/js/ZeroClipboard/ZeroClipboard.swf");//如果ZeroClipboard.js, ZeroClipboard.swf放在同一目录下，可省略这句;
+	clip = new ZeroClipboard.Client();
+	$('.copyit').live("mouseover", function() {
+	  var code=$(this).parent("p").siblings(".runcode").find("textarea").text();
+	  clip.setText(code);
+	  if (clip.div) {//已创建过包含flash的父层div,则鼠标hover时重新定位flash层的位置
+		  //clip.receiveEvent('mouseout', null);
+		  clip.reposition(this);
+	  }else{ 
+		clip.glue(this)};
+	  //clip.receiveEvent('mouseover', null);
+	} );
+	clip.addEventListener( 'complete', function(client, text){
+	 alert("已成功复制！"); 
+	});
+}
+copyThis();
+</script>
+<div class="cl"></div>
+<a href="javascript:;" class="toTop showThis"> <b>回顶部</b>
+</a>
+</div>
+<!-- container end -->
+<div id="footer">
+<div class="w99">
+		<div class="siteInfo">
+<h3 class="fl">网站信息</h3>
+<ul class="fl">
+<li>文章数：490 篇</li>
+<li>评论数：1570 条</li>
+<li>标签数：867 个</li>
+<li class="none">页面数：6 个</li>
+<li>友链数：24 条</li>
+<li class="none">用户数：6513 位</li>
+<li>共运行：1578 天</li>
+<li>建站日期:2011.11.17</li><!-- 这个地方请根据自己的建站时间修改-->
+<li>最近更新:2016.3.7</li>
+<li><a href="http://www.phpvar.com/phpvar.com/wp-login.php?action=register">注册</a></li><li><a href="http://www.phpvar.com/phpvar.com/wp-login.php">登录</a></li>
+</ul>
+</div>
+	<p class="tc">据说本站已备案，不管你信不信，反正我信了. ^_^</p>
+	<div id="copyright" class="tc">
+		Copyright
+		© 2011-2016		<a href="http://www.phpvar.com&#9;&#9;&#9;/">
+			Phpvar's Blog</a>
+		. All Rights Reserved.
+	</div>
+	<div id="power" class="tc">
+		基于
+		<a href="http://wordpress.org/" title="WordPress.org">WordPress</a>
+		技术创建 页面载入耗时
+		0.434		秒，共执行
+		79		条查询
+				<a rel="nofollow" href="http://www.miibeian.gov.cn/" style="display:none;">
+			陕ICP备12345678号</a>
+													<span class="tongji">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fddbc784421d0677dcf211f8ca9e09eb4' type='text/javascript'%3E%3C/script%3E"));
+</script><script src=" http://hm.baidu.com/h.js?ddbc784421d0677dcf211f8ca9e09eb4" type="text/javascript"></script><script src=" http://hm.baidu.com/h.js?ddbc784421d0677dcf211f8ca9e09eb4" type="text/javascript"></script><script src=" http://hm.baidu.com/h.js?ddbc784421d0677dcf211f8ca9e09eb4" type="text/javascript"></script><script src=" http://hm.baidu.com/h.js?ddbc784421d0677dcf211f8ca9e09eb4" type="text/javascript"></script><script src=" http://hm.baidu.com/h.js?ddbc784421d0677dcf211f8ca9e09eb4" type="text/javascript"></script>
+ | <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_3644965'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s24.cnzz.com/stat.php%3Fid%3D3644965' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_3644965"></span><script src=" http://s24.cnzz.com/stat.php?id=3644965" type="text/javascript"></script><span id="cnzz_stat_icon_3644965"></span><script src=" http://s24.cnzz.com/stat.php?id=3644965" type="text/javascript"></script><span id="cnzz_stat_icon_3644965"></span><script src=" http://s24.cnzz.com/stat.php?id=3644965" type="text/javascript"></script><span id="cnzz_stat_icon_3644965"></span><script src=" http://s24.cnzz.com/stat.php?id=3644965" type="text/javascript"></script><span id="cnzz_stat_icon_3644965"></span><script src=" http://s24.cnzz.com/stat.php?id=3644965" type="text/javascript"></script>
+</span><style>.tongji{display:none;}</style>								</div>
+	<div id="footer_left">
+								<!-- footer left end -->
+		<div id="footer_right"></div>
+		<!-- footer right end -->
+		<div class="cl"></div>
+	</div>
+</div>
+<!-- footer end -->
+</div>
+</div>
+<!-- wrapper end -->
+<!--[if IE 6]>
+<script type="text/javascript" src="http://www.phpvar.com/phpvar.com/wp-content/themes/forigi1.1/js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('*');
+// DD_belatedPNG.fix('*')即通用，但比较耗资源 ，要应用PNG透明的地方都加class属性即可
+</script>
+<![endif]-->
+
+<!--google analytics-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37001706-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- 在 footer.php 文件的 body 标签结束之前添加下列代码，声明类型为 script -->
+
+<div class="piro_overlay" style="display: none; opacity: 0.3; height: 1903px; visibility: visible;"></div><table class="pirobox_content" cellpadding="0" cellspacing="0" style="display: none;"><tbody><tr><td colspan="3" class="pirobox_up"><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a></td></tr><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="c_l"></td><td class="c_c"><span><span></span></span><div></div></td><td class="c_r"></td></tr><tr><td class="b_l"></td><td class="b_c"></td><td class="b_r"></td></tr><tr><td colspan="3" class="pirobox_down"><div class="piro_nav"><div class="caption"></div></div><a href="#play" class="play" title="play slideshow" style="display: none;"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a></td></tr></tbody></table><div id="imgCache" style="display:none"></div><link href="http://www.phpvar.com/archives/share.css" rel="stylesheet" type="text/css"><div class="piro_overlay" style="display: none; opacity: 0.3; height: 1903px; visibility: visible;"></div><table class="pirobox_content" cellpadding="0" cellspacing="0" style="display: none;"><tbody><tr><td colspan="3" class="pirobox_up"><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a></td></tr><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="c_l"></td><td class="c_c"><span><span></span></span><div></div></td><td class="c_r"></td></tr><tr><td class="b_l"></td><td class="b_c"></td><td class="b_r"></td></tr><tr><td colspan="3" class="pirobox_down"><div class="piro_nav"><div class="caption"></div></div><a href="#play" class="play" title="play slideshow" style="display: none;"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a></td></tr></tbody></table><div id="imgCache" style="display:none"></div><div class="piro_overlay" style="display: none; opacity: 0.3; height: 1833px;"></div><table class="pirobox_content" cellpadding="0" cellspacing="0" style="display: none;"><tbody><tr><td colspan="3" class="pirobox_up"><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a></td></tr><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="c_l"></td><td class="c_c"><span><span></span></span><div></div></td><td class="c_r"></td></tr><tr><td class="b_l"></td><td class="b_c"></td><td class="b_r"></td></tr><tr><td colspan="3" class="pirobox_down"><div class="piro_nav"><div class="caption"></div></div><a href="#play" class="play" title="play slideshow" style="display: none;"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a></td></tr></tbody></table><div id="imgCache" style="display:none"></div><div class="piro_overlay" style="display: none; opacity: 0.3; height: 1833px; visibility: visible;"></div><table class="pirobox_content" cellpadding="0" cellspacing="0" style="display: none;"><tbody><tr><td colspan="3" class="pirobox_up"><a href="#close" class="piro_close" title="close"></a><a href="#close" class="piro_close" title="close"></a></td></tr><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="c_l"></td><td class="c_c"><span><span></span></span><div></div></td><td class="c_r"></td></tr><tr><td class="b_l"></td><td class="b_c"></td><td class="b_r"></td></tr><tr><td colspan="3" class="pirobox_down"><div class="piro_nav"><div class="caption"></div></div><a href="#play" class="play" title="play slideshow" style="display: none;"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a><div class="piro_nav"></div><a href="#play" class="play" title="play slideshow"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a></td></tr></tbody></table><div id="imgCache" style="display:none"></div><div class="piro_overlay" style="display: none; opacity: 0.3; height: 1833px; visibility: visible;"></div><table class="pirobox_content" cellpadding="0" cellspacing="0" style="display: none;"><tbody><tr><td colspan="3" class="pirobox_up"><a href="#close" class="piro_close" title="close"></a></td></tr><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="c_l"></td><td class="c_c"><span><span></span></span><div></div></td><td class="c_r"></td></tr><tr><td class="b_l"></td><td class="b_c"></td><td class="b_r"></td></tr><tr><td colspan="3" class="pirobox_down"><div class="piro_nav"><div class="caption"></div></div><a href="#play" class="play" title="play slideshow" style="display: none;"></a><a href="#prev" class="piro_prev" title="previous image"></a><a href="#next" class="piro_next" title="next image"></a></td></tr></tbody></table><div id="imgCache" style="display:none"></div></body></html>

@@ -1,0 +1,18 @@
+﻿#share_bar{font-size:12px;width:650px;height:33px;line-height:33px;margin:4px auto; background:#fcfcfc;border:1px solid #ddd; overflow:hidden;}
+.article_view .view_eye,.share_divide,.bds_tools a{ background:url(../images/share_icon.gif) no-repeat;}
+.article_view{color:#aaa;line-height:10px;padding:0 3px; text-align:center;}
+.article_view .view_eye{display:inline-block;width:18px; height:14px;margin:3px 0; background-position:0 0 ;}
+.article_view span{display:block;}
+.share_divide{width:9px; height:100%; background-position:1px -19px;}
+/*百度分享样式重写*/
+.bds_tools{margin-right:5px;_display:inline;}
+.bds_tools a{width:81px; height:25px; cursor:pointer;float:left;margin:4px 0 0 5px;padding:0;_display:inline;}
+.bds_tools a:hover{margin-top:3px;}
+.bds_tools .bds_tsina{margin-left:3px;background-position:0 -57px!important;}
+.bds_tools .bds_tqq{ background-position:0 -83px !important;}
+.bds_tools .bds_qzone{ background-position:0 -135px !important;}
+/*.bds_tools .bds_renren{width:27px; background-position:-83px -109px !important}*/
+.bds_tools .bds_renren{background-position:0 -109px !important}
+.bds_tools .bds_more{width:16px;height:16px;margin:9px 2px 0 5px;padding:0; background:url(../images/share_icon.gif) no-repeat -38px 0!important;}
+.bds_tools a.shareCount{margin-top:9px;}
+.bdlikebutton{/*width:85px;height:25px;*/ text-align:center;margin:4px 5px 0 0;_display:inline;}

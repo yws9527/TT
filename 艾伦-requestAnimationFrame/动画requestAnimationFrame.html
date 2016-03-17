@@ -1,0 +1,1065 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0045)http://www.cnblogs.com/aaronjs/p/4283109.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./动画requestAnimationFrame_files/ca-pub-4210569241504288.js"></script>
+
+<title>动画requestAnimationFrame - 【Aaron】 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./动画requestAnimationFrame_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./动画requestAnimationFrame_files/bundle-sea.css">
+<link type="text/css" rel="stylesheet" href="./动画requestAnimationFrame_files/96362.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/aaronjs/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/aaronjs/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/aaronjs/wlwmanifest.xml">
+<script async="" src="./动画requestAnimationFrame_files/analytics.js"></script><script type="text/javascript" src="./动画requestAnimationFrame_files/encoder.js"></script><script src="./动画requestAnimationFrame_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'aaronjs', cb_enable_mathjax=true;</script>
+<script src="./动画requestAnimationFrame_files/blog-common.js" type="text/javascript"></script>
+<script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({
+  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] },
+  TeX: { equationNumbers: { autoNumber: ['AMS'], useLabelIds: true } },
+  'HTML-CSS': { linebreaks: { automatic: true } },
+  SVG: { linebreaks: { automatic: true } }});</script><script type="text/javascript" src="./动画requestAnimationFrame_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<a href="https://github.com/jsAaron"><img style="position: absolute; top: 0; right: 0; border: 0;" src="./动画requestAnimationFrame_files/241715567241255.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="header">
+	
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/aaronjs/">艾伦 Aaron</a><br>
+		以大多数人的努力程度之低，根本轮不到拼天赋...
+	</div>
+</div>
+
+</div>
+
+<div id="mytopmenu">
+	
+		<div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a> &nbsp;
+<a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/aaronjs/">首页</a> &nbsp;
+<a href="http://q.cnblogs.com/" class="menu">博问</a> &nbsp;
+<a href="http://home.cnblogs.com/ing/" class="menu">闪存</a> &nbsp;
+<a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a> &nbsp;
+<a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E3%80%90Aaron%E3%80%91">联系</a> &nbsp;
+<a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/aaronjs/rss">订阅</a><a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/aaronjs/rss"><img src="./动画requestAnimationFrame_files/xml.gif" alt="订阅"></a>&nbsp;
+<a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a>
+</div>
+		<div id="mystats"></div>
+	
+</div>
+<div id="centercontent">
+	
+<div id="post_detail">
+<div class="post">
+	<h1 class="postTitle"><a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/aaronjs/p/4283109.html">动画requestAnimationFrame</a></h1>
+	<div class="menuAaron" style="right: -30px;"><div id="menuset"><a id="menuclose" style="display:none">隐藏导航</a><a id="menuopen">章节导航</a></div><ul id="menumain" style="display:none"><li class="forTitles __h1"><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#_h1_0">1.&nbsp;前言</a></li><li class="forTitles __h1"><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#_h1_1">2.&nbsp;定时器</a></li><li class="forTitles __h1"><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#_h1_2">3.&nbsp;requestAnimationFrame</a></li><li class="forTitles __h1"><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#_h1_3">4.&nbsp;比较</a></li><li class="forTitles __h1"><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#_h1_4" style="color: rgb(255, 51, 0);">5.&nbsp;兼容处理</a></li><li class="forTitles __h1"><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#_h1_5">6.&nbsp;对比</a></li></ul></div><div id="cnblogs_post_body"><a class="forTitles __h1" name="_h1_0"></a><h1>前言</h1>
+<p>在研究canvas的2D pixi.js库的时候，其动画的刷新都用requestAnimationFrame替代了setTimeout 或 setInterval</p>
+<p>但是jQuery中还是采用了setInterval，我这章就研究下顺便改造下jQuery的动画</p>
+<p>&nbsp;</p>
+<a class="forTitles __h1" name="_h1_1"></a><h1>定时器</h1>
+<p>jQuery动画的实现考虑到兼容与易用性采用了setInterval来不断绘制新的属性值，从而达到动画的效果。</p>
+<p>大部分浏览器的显示频率是<code>16.7ms，由于浏览器的特性，setInterval会有一个丢帧的问题</code></p>
+<p><code>即使向其传递毫秒为单位的参数，它们也不能达到ms的准确性。这是因为javascript是单线程的，可能会发生阻塞</code></p>
+<p><code>jQuery会有一个全局设置jQuery.fx.interval = 13 </code>设置动画每秒运行帧数。</p>
+<p>默认是13毫秒。该属性值越小，在速度较快的浏览器中（例如，Chrome），动画执行的越流畅，但是会影响程序的性能并且占用更多的 CPU 资源</p>
+<p>那么归纳一点最关键的问题：</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;">
+<pre><strong><span style="color: #ff0000;">开发着并不知道下一刻绘制动画的最佳时机是什么时候</span></strong></pre>
+</div>
+<p>&nbsp;</p>
+<a class="forTitles __h1" name="_h1_2"></a><h1>requestAnimationFrame</h1>
+<p>requestAnimationFrame 是专门为实现高性能的帧动画而设计的一个API</p>
+<p>说简单点</p>
+<ul>
+<li style="font-size: 15px;">setInterval、setTimeout是开发者主动要求浏览器去绘制，但是由于种种问题，浏览器可能会漏掉部分命令</li>
+<li style="font-size: 15px;">requestAnimationFrame 就是浏览器什么要开始绘制了浏览器自己知道，通过requestAnimationFrame 告诉开发者，这样就不会出现重复绘制丢失的问题了</li>
+</ul>
+<p>目前已在多个浏览器得到了支持，包括IE10+，Firefox，Chrome，Safari，Opera等，在移动设备上，ios6以上版本以及IE mobile 10以上也支持requestAnimationFrame，</p>
+<p>唯一比较遗憾的是目前安卓上的原生浏览器并不支持requestAnimationFrame，不过对requestAnimationFrame的支持应该是大势所趋了，安卓版本的chrome 16+也是支持requestAnimationFrame的。</p>
+<p>&nbsp;</p>
+<a class="forTitles __h1" name="_h1_3"></a><h1>比较</h1>
+<p>区别：</p>
+<ol>
+<li>requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧</li>
+<li>隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。</li>
+<li>requestAnimationFrame也会像setTimeout一样有一个返回值ID用于取消，可以把它作为参数传入cancelAnimationFrame函数来取消requestAnimationFrame的回调</li>
+</ol>
+<p>&nbsp;</p>
+<a class="forTitles __h1" name="_h1_4"></a><h1>兼容处理</h1>
+<p>摘自HTML5 Canvas 核心技术</p>
+<div class="cnblogs_code" style="background-color: #f5f5f5; border: #cccccc 1px solid; padding: 5px;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./动画requestAnimationFrame_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>window.requestNextAnimationFrame =<span style="color: #000000;"> (function () {
+  </span><span style="color: #0000ff;">var</span> originalWebkitRequestAnimationFrame =<span style="color: #000000;"> undefined,
+      wrapper </span>=<span style="color: #000000;"> undefined,
+      callback </span>=<span style="color: #000000;"> undefined,
+      geckoVersion </span>= <span style="color: #800080;">0</span><span style="color: #000000;">,
+      userAgent </span>=<span style="color: #000000;"> navigator.userAgent,
+      index </span>= <span style="color: #800080;">0</span><span style="color: #000000;">,
+      self </span>= <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+
+  </span><span style="color: #008000;">//</span><span style="color: #008000;"> Workaround for Chrome 10 bug where Chrome
+  </span><span style="color: #008000;">//</span><span style="color: #008000;"> does not pass the time to the animation function</span>
+
+  <span style="color: #0000ff;">if</span><span style="color: #000000;"> (window.webkitRequestAnimationFrame) {
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Define the wrapper</span>
+<span style="color: #000000;">
+    wrapper </span>=<span style="color: #000000;"> function (time) {
+      </span><span style="color: #0000ff;">if</span> (time ===<span style="color: #000000;"> undefined) {
+        time </span>= +<span style="color: #0000ff;">new</span><span style="color: #000000;"> Date();
+      }
+      self.callback(time);
+    };
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Make the switch</span>
+<span style="color: #000000;">
+    originalWebkitRequestAnimationFrame </span>=<span style="color: #000000;"> window.webkitRequestAnimationFrame;
+
+    window.webkitRequestAnimationFrame </span>=<span style="color: #000000;"> function (callback, element) {
+      self.callback </span>=<span style="color: #000000;"> callback;
+
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> Browser calls the wrapper and wrapper calls the callback</span>
+<span style="color: #000000;">
+      originalWebkitRequestAnimationFrame(wrapper, element);
+    }
+  }
+
+  </span><span style="color: #008000;">//</span><span style="color: #008000;"> Workaround for Gecko 2.0, which has a bug in
+  </span><span style="color: #008000;">//</span><span style="color: #008000;"> mozRequestAnimationFrame() that restricts animations
+  </span><span style="color: #008000;">//</span><span style="color: #008000;"> to 30-40 fps.</span>
+
+  <span style="color: #0000ff;">if</span><span style="color: #000000;"> (window.mozRequestAnimationFrame) {
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Check the Gecko version. Gecko is used by browsers
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> other than Firefox. Gecko 2.0 corresponds to
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Firefox 4.0.</span>
+<span style="color: #000000;">
+    index </span>= userAgent.indexOf(<span style="color: #800000;">'</span><span style="color: #800000;">rv:</span><span style="color: #800000;">'</span><span style="color: #000000;">);
+
+    </span><span style="color: #0000ff;">if</span> (userAgent.indexOf(<span style="color: #800000;">'</span><span style="color: #800000;">Gecko</span><span style="color: #800000;">'</span>) != -<span style="color: #800080;">1</span><span style="color: #000000;">) {
+      geckoVersion </span>= userAgent.substr(index + <span style="color: #800080;">3</span>, <span style="color: #800080;">3</span><span style="color: #000000;">);
+
+      </span><span style="color: #0000ff;">if</span> (geckoVersion === <span style="color: #800000;">'</span><span style="color: #800000;">2.0</span><span style="color: #800000;">'</span><span style="color: #000000;">) {
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> Forces the return statement to fall through
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> to the setTimeout() function.</span>
+<span style="color: #000000;">
+        window.mozRequestAnimationFrame </span>=<span style="color: #000000;"> undefined;
+      }
+    }
+  }
+
+  </span><span style="color: #0000ff;">return</span>  window.requestAnimationFrame ||<span style="color: #000000;">
+      window.webkitRequestAnimationFrame </span>||<span style="color: #000000;">
+      window.mozRequestAnimationFrame </span>||<span style="color: #000000;">
+      window.oRequestAnimationFrame </span>||<span style="color: #000000;">
+      window.msRequestAnimationFrame </span>||<span style="color: #000000;">
+
+      function (callback, element) {
+        </span><span style="color: #0000ff;">var</span><span style="color: #000000;"> start,
+            finish;
+
+        window.setTimeout(function () {
+          start </span>= +<span style="color: #0000ff;">new</span><span style="color: #000000;"> Date();
+          callback(start);
+          finish </span>= +<span style="color: #0000ff;">new</span><span style="color: #000000;"> Date();
+
+          self.timeout </span>= <span style="color: #800080;">1000</span> / <span style="color: #800080;">60</span> - (finish -<span style="color: #000000;"> start);
+
+        }, self.timeout);
+      };
+}());
+
+  window.cancelNextRequestAnimationFrame </span>=<span style="color: #000000;"> window.cancelRequestAnimationFrame
+    </span>||<span style="color: #000000;"> window.webkitCancelAnimationFrame
+    </span>||<span style="color: #000000;"> window.webkitCancelRequestAnimationFrame
+    </span>||<span style="color: #000000;"> window.mozCancelRequestAnimationFrame
+    </span>||<span style="color: #000000;"> window.oCancelRequestAnimationFrame
+    </span>||<span style="color: #000000;"> window.msCancelRequestAnimationFrame
+    </span>|| clearTimeout;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./动画requestAnimationFrame_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<ol><!--EndFragment--></ol>
+<a class="forTitles __h1" name="_h1_5"></a><h1>对比</h1>
+<p>通过requestAnimationFrame与setInterval同样的效果对比</p>
+<p>一段动画采用setInterval与requestAnimationFrame，分别给出了webKit下调用刷新的次数</p>
+<p>setInterval实现，调用了144次左右</p>
+<p><textarea id="theCode" style="width: 600px; height: 200px;" title="双击运行代码">
+
+&lt;!doctype html&gt;&lt;img id="book" style="background:red;opacity:1;position: relative; left: 500px;" alt="" width="100" height="123" data-mce-style="background: red; opacity: 1; position: relative; left: 500px;" /&gt;&lt;div id="several"&gt;&lt;br /&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;
+
+var book = document.getElementById('book')
+var several = document.getElementById('several');
+
+animate(book, {
+	left: 50,
+	duration: 2000
+})
+
+function animate(elem, options){
+	//动画初始值
+	var start = 500
+	//动画结束值
+	var end = options.left
+	//动画id
+	var timerId;
+	var createTime = function(){
+		return  (+new Date)
+	}
+	//动画开始时间
+	var startTime = createTime();
+
+	var i = 0;
+
+	function tick(){	
+		i++;
+		several.innerHTML = 'setInterval调用次数:' + i;
+		//每次变化的时间
+		var remaining = Math.max(0, startTime + options.duration - createTime())
+		var temp = remaining / options.duration || 0;
+		var percent = 1 - temp;
+		var stop = function(){
+			//停止动画
+			clearInterval(timerId);
+			timerId = null;			
+		}
+		var setStyle = function(value){
+			elem.style['left'] = value + 'px'
+		}
+		//移动的距离
+		var now = (end - start) * percent + start;
+		if(percent === 1){
+			setStyle(now)
+			stop();
+		}else{
+			setStyle(now)
+		}
+	}
+
+	//开始执行动画
+	var timerId = setInterval(tick, 13);
+}
+&lt;/script&gt;</textarea><br>
+<input onclick="runCode(&#39;theCode&#39;)" type="button" value="运行代码"></p>
+<p>&nbsp;</p>
+<p>requestAnimationFrame 实现调用了120次左右</p>
+<p>
+
+<textarea id="theCode1" style="width: 600px; height: 200px;" title="双击运行代码">
+
+&lt;!doctype html&gt;&lt;img id="book" style="background:red;opacity:1;position: relative; left: 500px;" alt="" width="100" height="123" data-mce-style="background: red; opacity: 1; position: relative; left: 500px;" /&gt;&lt;div id="several"&gt;&lt;br /&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;
+
+var book = document.getElementById('book')
+var several = document.getElementById('several');
+
+animate(book, {
+	left: 50,
+	duration: 2000
+})
+
+function animate(elem, options){
+	//动画初始值
+	var start = 500
+	//动画结束值
+	var end = options.left
+
+	var createTime = function(){
+		return  (+new Date)
+	}
+	//动画开始时间
+	var startTime = createTime();
+
+	var timerId;
+
+	//开始动画
+	var startAnim = function() {
+		timerId = requestAnimationFrame(tick,15);
+	}
+	//停止动画
+	var stopAnim = function() {
+		cancelAnimationFrame(timerId)
+	}
+
+	var i = 0;
+
+	function tick(){	
+		i++;
+		several.innerHTML = 'requestAnimationFrame调用次数:' + i;
+		//每次变化的时间
+		var remaining = Math.max(0, startTime + options.duration - createTime())
+		var temp = remaining / options.duration || 0;
+		var percent = 1 - temp;
+		var setStyle = function(value){
+			elem.style['left'] = value + 'px'
+		}
+		//移动的距离
+		var now = (end - start) * percent + start;
+		if(percent === 1){
+			setStyle(now)
+			stopAnim() ;
+		}else{
+			setStyle(now)
+			startAnim(tick);
+		}
+	}
+
+	//开始执行动画
+	startAnim(tick);
+}
+&lt;/script&gt;</textarea><br>
+<input onclick="runCode(&#39;theCode1&#39;)" type="button" value="运行代码"></p>
+<p>&nbsp;</p>
+<p>通过对比，在同样的时间里，通过定时器刷新的次数是要更多，当然定时器跟设置的时间是有关系的</p>
+<p>这里我要强调一点，有效值，就是我们在浏览器能接受的范围内，给出一个最佳的渲染时间，这样才是一个性能优化的最佳的选择</p>
+<p>&nbsp;</p><br><div id="MySignature" style="display: block;"><div id="MySignature_title">如果您看完本篇文章感觉不错，请点击一下右下角的<strong><span style="color: #ff0000;">【<a id="post-up" href="javascript:void(0);">推荐</a>】</span></strong>来支持一下博主，谢谢！</div><br><p style="color:red;font-weight:bold;">如果是原创文章，转载请注明出处！！！</p><p id="aaronurl">by Aaron：<a href="http://www.cnblogs.com/aaronjs/p/4283109.html">http://www.cnblogs.com/aaronjs/p/4283109.html</a><a></a></p></div></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/aaronjs/category/320269.html">其他</a>, <a href="http://www.cnblogs.com/aaronjs/category/511281.html">jQuery</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4283109,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E3%80%90Aaron%E3%80%91" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./动画requestAnimationFrame_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./动画requestAnimationFrame_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/aaronjs/" target="_blank"><img src="./动画requestAnimationFrame_files/20140705170251.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/aaronjs/">【Aaron】</a><br>
+<a href="http://home.cnblogs.com/u/aaronjs/followees">关注 - 31</a><br>
+<a href="http://home.cnblogs.com/u/aaronjs/followers">粉丝 - 2070</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">8</span>
+    </div>
+	<div class="buryit" onclick="votePost(4283109,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/aaronjs/p/4278660.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/aaronjs/p/4278660.html" title="发布于2015-02-09 09:06">jQuery源码分析系列(40）: 动画设计</a><br><a href="http://www.cnblogs.com/aaronjs/p/4285447.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/aaronjs/p/4285447.html" title="发布于2015-02-11 10:27">jQuery动画的实现</a><br></div>
+</div>
+
+
+	<div class="postDesc">posted on <span id="post-date">2015-02-10 11:25</span> <a href="http://www.cnblogs.com/aaronjs/">【Aaron】</a> 阅读(<span id="post_view_count">1932</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4283109" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/aaronjs/p/4283109.html#" onclick="AddToWz(4283109);return false;">收藏</a></div>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=96362,cb_entryId=4283109,cb_blogApp=currentBlogApp,cb_blogUserGuid='70732ebb-22d5-e011-8ee0-842b2b196315',cb_entryCreatedDate='2015/2/10 11:25:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/aaronjs/p/4283109.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="http://www.ucloud.cn/site/active/new_gift.html?utm_source=cost&amp;utm_campaign=bokeyuan1&amp;utm_medium=display&amp;utm_content=3yuecu" target="_blank">【推荐】UCloud开年大礼，充5000返1000；买云主机送CDN，详情点击</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block">     <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-4210569241504288" data-ad-slot="5457903683" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/540846/" target="_blank">AlphaGo之父：下个版本会让电脑从零学围棋</a><br> ·  <a href="http://news.cnblogs.com/n/540845/" target="_blank">Google官方介绍Android N的各项新特性</a><br> ·  <a href="http://news.cnblogs.com/n/540844/" target="_blank">微软新工具：迁移Evernote所有内容至OneNote</a><br> ·  <a href="http://news.cnblogs.com/n/540843/" target="_blank">戴尔发布全新XPS 13开发版笔记本电脑 采用Linux操作系统</a><br> ·  <a href="http://news.cnblogs.com/n/540842/" target="_blank">支付宝回应盗刷案：事主卖手机时向买家透露了云服务密码</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./动画requestAnimationFrame_files/24442-20160307140747632-1210035054.jpg" alt="极光推送20160307" title="极光推送20160307"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/539160/" target="_blank">架构漫谈（一）：什么是架构？</a><br> ·  <a href="http://kb.cnblogs.com/page/540632/" target="_blank">架构的本质</a><br> ·  <a href="http://kb.cnblogs.com/page/538249/" target="_blank">谷歌背后的数学</a><br> ·  <a href="http://kb.cnblogs.com/page/533808/" target="_blank">Medium开发团队谈架构设计</a><br> ·  <a href="http://kb.cnblogs.com/page/539274/" target="_blank">理解“渐进增强(Progressive Enhancement)”</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="leftcontent">
+	
+		<div id="leftcontentcontainer">
+			
+<!--done-->
+<div class="newsItem">
+	<div id="blog-news"><p><strong>前端架构 </strong></p>
+<strong><p>基于phoneGap Hybird混合应用</p></strong>
+<strong><p>衍生的SPA项目： </p></strong>
+<strong><p><a href="http://www.appone.cn/">公司App平台</a></p></strong>
+<strong><p><a href="http://www.miaomiaoxue.com/">秒秒学 - 交互式软件培训</a></p></strong>
+<strong><p><a href="https://itunes.apple.com/cn/app/du-ku-er-tong-tu-shu-guan/id893895504?mt=8&amp;ign-mpt=uo%3D4">读酷儿童图书馆 - 儿童阅读应用</a></p></strong>
+<p></p>
+
+<p>
+<img src="./动画requestAnimationFrame_files/o_ttt.png">
+</p>
+
+<strong><p>慕课网系列教程： </p></strong>
+
+<strong><a href="http://www.imooc.com/view/453">H5+JS+CSS3实现圣诞情缘</a><a href="http://www.imooc.com/learn/545"><img src="./动画requestAnimationFrame_files/o_QQ图片20151215165445.png"></a><br><br>
+<strong>
+
+<strong><a href="http://www.imooc.com/view/453">H5+JS+CSS3实现七夕言情</a></strong><a href="http://www.imooc.com/view/453"><img src="./动画requestAnimationFrame_files/o_55add9c50001040d06000338-200-114.jpg"></a><br><br>
+<strong>
+
+<strong><a href="http://www.imooc.com/view/172">jQuery源码解析(架构与依赖模块)</a></strong><a href="http://www.imooc.com/view/172"><img src="./动画requestAnimationFrame_files/o_542769410001a8ee06000338-200-114.jpg"></a><br><br>
+<strong>
+
+<strong><a href="http://www.imooc.com/view/222">jQuery源码解析(DOM与核心模块)</a></strong><a href="http://www.imooc.com/view/222"><img src="./动画requestAnimationFrame_files/o_222.png"></a>
+
+<strong><p>正在编写的书： </p></strong><a href="https://github.com/JsAaron/jQuery">jQuery架构设计与实现<img src="./动画requestAnimationFrame_files/o_111.jpg"></a>
+<br>
+<br>
+<a href="https://www.zybuluo.com/jikeytang/note/65371">加群前,请仔细阅读群规</a><br>
+<strong>jQuery技术交流群①:239147101</strong><br>
+<strong>jQuery架构设计与实现②:207345691</strong><br>
+
+<strong><a href="http://weibo.com/AaronJs">微博: weibo.com/AaronJs</a></strong><br>
+<strong><a href="https://github.com/jsAaron">github: github.com/jsAaron</a></strong><br><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/aaronjs/">【Aaron】</a><br>园龄：<a href="http://home.cnblogs.com/u/aaronjs/" title="入园时间：2011-09-02">4年6个月</a><br>荣誉：<a href="http://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="http://home.cnblogs.com/u/aaronjs/followers/">2070</a><br>关注：<a href="http://home.cnblogs.com/u/aaronjs/followees/">31</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;70732ebb-22d5-e011-8ee0-842b2b196315&#39;)">+加关注</a></div></div></strong></strong></strong></strong></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="日历">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/02/01&#39;);return false;">&lt;</a></td><td align="center">2016年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td class="CalWeekendDay" align="center">5</td></tr><tr><td class="CalWeekendDay" align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td class="CalTodayDay" align="center">12</td></tr><tr><td class="CalWeekendDay" align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td class="CalWeekendDay" align="center">19</td></tr><tr><td class="CalWeekendDay" align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td class="CalWeekendDay" align="center">26</td></tr><tr><td class="CalWeekendDay" align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td></tr><tr><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td></tr>
+</tbody></table></div><br><span style="color:red">如果您觉得此文有帮助，可以打赏点钱给我支付宝chenwenkl@163.com<br>或扫描二维码<span><br><img src="./动画requestAnimationFrame_files/o_o_aex3ezbv03vx4nvq9e (1).png"></span></span><br><br><h3 class="catListTitle">友情链接</h3><strong></strong><div class="youqing"><strong><a href="http://www.cnblogs.com/yexiaochai/">叶小钗</a></strong><br><strong><a href="http://www.cnblogs.com/jikey">豪情</a></strong><br><strong><a href="http://www.cnblogs.com/vajoy/">vajoy</a></strong><br><strong><a href="http://stylechen.com/">雨夜带刀</a></strong><br><strong><a href="http://www.cnblogs.com/hustskyking/">Barret Lee</a></strong><br><strong><a href="http://www.cnblogs.com/sharpxiajun/">夏天的森林</a></strong><br><strong><a href="http://www.storagelab.org.cn/zhangdi/">张迪的blog</a></strong><br><br></div><script type="text/javascript">loadBlogDefaultCalendar();</script><br>
+			<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+		<h3 class="catListTitle">随笔分类</h3>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/aaronjs/category/488253.html">avalon(13)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/aaronjs/category/406175.html">backbone(6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_2" class="listitem" href="http://www.cnblogs.com/aaronjs/category/492535.html">bootstrap(2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_3" class="listitem" href="http://www.cnblogs.com/aaronjs/category/656826.html">canvas(1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_4" class="listitem" href="http://www.cnblogs.com/aaronjs/category/420933.html">css(6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_5" class="listitem" href="http://www.cnblogs.com/aaronjs/category/497761.html">deferred(3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_6" class="listitem" href="http://www.cnblogs.com/aaronjs/category/490444.html">extjs(1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_7" class="listitem" href="http://www.cnblogs.com/aaronjs/category/618098.html">hammer(2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_8" class="listitem" href="http://www.cnblogs.com/aaronjs/category/490443.html">iscroll(2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_9" class="listitem" href="http://www.cnblogs.com/aaronjs/category/511281.html">jQuery(49)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_10" class="listitem" href="http://www.cnblogs.com/aaronjs/category/496923.html">knockout(6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_11" class="listitem" href="http://www.cnblogs.com/aaronjs/category/681700.html">mongoDB(1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_12" class="listitem" href="http://www.cnblogs.com/aaronjs/category/407610.html">mvc(8)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_13" class="listitem" href="http://www.cnblogs.com/aaronjs/category/562988.html">node(5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_14" class="listitem" href="http://www.cnblogs.com/aaronjs/category/601941.html">requireJs</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_15" class="listitem" href="http://www.cnblogs.com/aaronjs/category/490442.html">sencha(3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_16" class="listitem" href="http://www.cnblogs.com/aaronjs/category/490446.html">vue(1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_17" class="listitem" href="http://www.cnblogs.com/aaronjs/category/490445.html">zepto(1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_18" class="listitem" href="http://www.cnblogs.com/aaronjs/category/495742.html">面试题(2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_19" class="listitem" href="http://www.cnblogs.com/aaronjs/category/659417.html">模式讨论(5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_20" class="listitem" href="http://www.cnblogs.com/aaronjs/category/320269.html">其他(158)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_21" class="listitem" href="http://www.cnblogs.com/aaronjs/category/498931.html">设计模式(4)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_22" class="listitem" href="http://www.cnblogs.com/aaronjs/category/551183.html">数据结构和算法(8)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_23" class="listitem" href="http://www.cnblogs.com/aaronjs/category/549296.html">文章转载(16)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_24" class="listitem" href="http://www.cnblogs.com/aaronjs/category/493583.html">移动端(8)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_25" class="listitem" href="http://www.cnblogs.com/aaronjs/category/429775.html">异步编程(8)</a></li>
+			
+				</ul>
+			
+	
+		
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_0" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2016/02.html">2016年2月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_1" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2016/01.html">2016年1月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_2" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/12.html">2015年12月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_3" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/11.html">2015年11月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_4" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/10.html">2015年10月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_5" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/09.html">2015年9月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_6" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/08.html">2015年8月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_7" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/07.html">2015年7月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_8" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/06.html">2015年6月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_9" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/05.html">2015年5月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_10" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/04.html">2015年4月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_11" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/03.html">2015年3月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_12" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/02.html">2015年2月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_13" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2015/01.html">2015年1月 (10)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_14" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/12.html">2014年12月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_15" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/11.html">2014年11月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_16" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/10.html">2014年10月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_17" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/09.html">2014年9月 (7)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_18" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/08.html">2014年8月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_19" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/07.html">2014年7月 (16)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_20" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/06.html">2014年6月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_21" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/05.html">2014年5月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_22" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/04.html">2014年4月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_23" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/03.html">2014年3月 (17)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_24" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/02.html">2014年2月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_25" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2014/01.html">2014年1月 (7)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_26" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/12.html">2013年12月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_27" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/11.html">2013年11月 (7)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_28" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/10.html">2013年10月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_29" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/09.html">2013年9月 (8)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_30" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/08.html">2013年8月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_31" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/07.html">2013年7月 (17)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_32" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/06.html">2013年6月 (28)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_33" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2013/05.html">2013年5月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_34" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/11.html">2012年11月 (7)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_35" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/10.html">2012年10月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_36" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/08.html">2012年8月 (11)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_37" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/07.html">2012年7月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_38" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/06.html">2012年6月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_39" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/04.html">2012年4月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_40" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/03.html">2012年3月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_41" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2012/02.html">2012年2月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_42" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2011/10.html">2011年10月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_43" class="listitem" href="http://www.cnblogs.com/aaronjs/archive/2011/09.html">2011年9月 (17)</a></li>
+			
+				</ul>
+			
+	
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		370177
+	</li><li>
+		排名 -
+		287
+	</li>
+</ul>
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/3147130.html#3378047">1. Re:吐槽：基于PhoneGap开发移动项目</a></li>
+    <li class="recent_comment_body">蛮叼的，13年就用了</li>
+    <li class="recent_comment_author">--imzhi</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/5228957.html#3376951">2. Re:pixi.js webgl使用</a></li>
+    <li class="recent_comment_body">这是啥？空的</li>
+    <li class="recent_comment_author">--雅X共赏</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/3785646.html#3371781">3. Re:jQuery源码分析系列(35) : Ajax - jsonp的实现与原理</a></li>
+    <li class="recent_comment_body">@思思博士终于明白了 牛逼 感谢 JS 方法调来调去 真牛逼...</li>
+    <li class="recent_comment_author">--Lumia1020</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/3683925.html#3371732">4. Re:jQuery源码分析系列(30) : Ajax 整体结构</a></li>
+    <li class="recent_comment_body">当前在看这一块  源码量 还是有点大</li>
+    <li class="recent_comment_author">--Lumia1020</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/3300797.html#3370151">5. Re:jQuery 2.0.3 源码分析Sizzle引擎 - 词法解析</a></li>
+    <li class="recent_comment_body">博主你好，看了你的文章觉得很有收获，不过看了源码之后发现关于 Sizzle 的tokenize 处理那段过程博文的解释和图解基本是错误的，我的理解如下：函数对于一个 css 选择器字符串是按照从左到右......</li>
+    <li class="recent_comment_author">--小明v</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/3281911.html#3366907">6. Re:jQuery 2.0.3 源码分析core - 选择器</a></li>
+    <li class="recent_comment_body">@lmh2072005(?:pattern) 这个确实不捕获...</li>
+    <li class="recent_comment_author">--浅水224</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/3278578.html#3366897">7. Re:jQuery 2.0.3 源码分析core - 整体架构</a></li>
+    <li class="recent_comment_body">@jsunlee之前错了，改改。这个函数实际是通过复制属性实现继承，来实现对jQuery的扩展。如果只传入了，一个obj，就这一个参数，那就把这个obj的属性扩展到了jQuery上并返回了jQuery......</li>
+    <li class="recent_comment_author">--浅水224</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/archive/2012/06/30/2570970.html#3364897">8. Re:精通 JS正则表达式</a></li>
+    <li class="recent_comment_body">//负向前瞻(?!)<br>中的演示代码最后一个的执行结果是a，不是one。</li>
+    <li class="recent_comment_author">--ChenXif</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/archive/2012/06/30/2570970.html#3364790">9. Re:精通 JS正则表达式</a></li>
+    <li class="recent_comment_body">alert(str.replace(re,"21"));//在这个里面1表示第一个分组1234,2则表示5678 是 "＄2" "＄1"。 被转义了。。通俗易懂，结构清晰的好文...</li>
+    <li class="recent_comment_author">--ChenXif</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/aaronjs/p/4744014.html#3363781">10. Re:原创：CSS3技术-雪碧图自适应缩放与精灵动画方案</a></li>
+    <li class="recent_comment_body">楼主有个问题，仔细看效果时，图片有一点左右摆动，是什么原因导致，能不能避免？</li>
+    <li class="recent_comment_author">--海蓝天sky</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/aaronjs/p/3279314.html">1. jQuery源码分析系列(76464)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3278578.html">2. jQuery 2.0.3 源码分析core - 整体架构(42917)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3160863.html">3. bootstrap-modal 学习笔记 源码分析(41240)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3169480.html">4. 移动web app开发必备 -  zepto事件问题(19431)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3281911.html">5. jQuery 2.0.3 源码分析core - 选择器(19402)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3660102.html">6. Vue 入门指南(18584)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3614049.html">7. 前端MVVM框架设计及实现（一）(16257)</a></li><li><a href="http://www.cnblogs.com/aaronjs/archive/2012/06/30/2570970.html">8. 精通 JS正则表达式(15122)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/4255232.html">9. Hybrid App应用制作与跨平台解决方案(14921)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3444874.html">10. 解密jQuery事件核心 - 绑定设计（一）(12870)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/aaronjs/p/3278578.html">1. jQuery 2.0.3 源码分析core - 整体架构(72)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3172112.html">2. 看看国外的javascript题目,你能全部做对吗?(44)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/4255232.html">3. Hybrid App应用制作与跨平台解决方案(41)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/4912316.html">4. 开发node桌面级应用工具：apk转化epub(29)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3300797.html">5. jQuery 2.0.3 源码分析Sizzle引擎 - 词法解析(28)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3322466.html">6. jQuery 2.0.3 源码分析Sizzle引擎 - 编译函数（大篇幅）(26)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3281911.html">7. jQuery 2.0.3 源码分析core - 选择器(24)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3279314.html">8. jQuery源码分析系列(23)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3342344.html">9. jQuery 2.0.3 源码分析 回调对象 - Callbacks(20)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3614049.html">10. 前端MVVM框架设计及实现（一）(20)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/aaronjs/p/3278578.html">1. jQuery 2.0.3 源码分析core - 整体架构(165)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3279314.html">2. jQuery源码分析系列(156)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/4255232.html">3. Hybrid App应用制作与跨平台解决方案(96)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3322466.html">4. jQuery 2.0.3 源码分析Sizzle引擎 - 编译函数（大篇幅）(91)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3356505.html">5. jQuery 2.0.3 源码分析 Deferred（最细的实现剖析，带图）(78)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3444874.html">6. 解密jQuery事件核心 - 绑定设计（一）(66)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3281911.html">7. jQuery 2.0.3 源码分析core - 选择器(58)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3300797.html">8. jQuery 2.0.3 源码分析Sizzle引擎 - 词法解析(47)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3342344.html">9. jQuery 2.0.3 源码分析 回调对象 - Callbacks(39)</a></li><li><a href="http://www.cnblogs.com/aaronjs/p/3447483.html">10. 解密jQuery事件核心 - 委托设计（二）(36)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script></div>
+	
+</div>
+
+<!--done-->
+<div class="footer">
+	Powered by: <a href="http://www.cnblogs.com/">博客园</a>	模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+	Copyright ©2016 【Aaron】
+</div>
+
+
+
+<!--PageEndHtml Block Begin-->
+<a id="scrollUp" href="http://www.cnblogs.com/aaronjs/p/4283109.html#top" title="回到顶部" style="position: fixed; z-index: 2147483647;"></a>
+
+
+<script type="text/javascript">
+
+
+	///////////
+	//可执行代码 //
+	///////////
+	function runCode(cod1) {
+		var cod = window.document.all(cod1)
+		var code = cod.value;
+		var newwin = window.document.open('', '', '');
+		newwin.opener = null
+		newwin.document.write(code);
+		newwin.document.close();
+	}
+
+
+$(function() {
+
+	var showInfo = $("#cnblogs_post_body");
+
+	(function() {
+		var body = showInfo;
+		var hs = body.find('h1, h2');
+		hs.append($('<a class="forTitles"></a>'));
+		body.find("ul li").css('fontSize', '15px');
+		var forTitles = body.find('.forTitles');
+
+		if (forTitles.length < 1) return;
+
+		//父li
+		$.each(forTitles, function(i, item) {
+			var el = $(this);
+			var pEl = el.parent();
+			var nodeName = pEl[0].tagName;
+			if (nodeName == 'H1') {
+				el.addClass('__h1');
+				el.attr('name', '_h1_' + i);
+			} else if (nodeName == 'H2') {
+				el.addClass('__h2');
+				el.attr('name', '_h2_' + i);
+			}
+		})
+
+		//导航
+		var menuAaron = $('<div class="menuAaron" style="right: -30px;">')
+		var menuset = $('<div id="menuset">' +
+			'<a id="menuclose" style="display:none">隐藏导航</a>' +
+			'<a id="menuopen">章节导航</a>' +
+			'</div>');
+		var list = $('<ul id="menumain" style="display:none"></ul>');
+
+		var menuli = [];
+		$.each(forTitles, function(i, item) {
+			var el = $(this);
+			var pEl = el.parent();
+			pEl.before(el);
+			var li = $('<li class="' + el.attr('class') + '"><a  href="#' + el.attr('name') + '" >' + (i + 1) + '.&nbsp' + pEl.text() + '</a>');
+			menuli.push(li)
+			list.append(li);
+		});
+		menuAaron.append(menuset);
+		menuAaron.append(list);
+		body.before(menuAaron);
+
+
+		var offsetMenu = [];
+		var preValue;
+		$.each(forTitles, function(index, ele) {
+			offsetMenu.push({
+				i: index,
+				value: $(ele).offset().top
+			})
+		})
+
+		//滚动
+		var preIndex,currIndex;
+		function setMenu() {
+			var scrollTop = $(window).scrollTop();
+			if (scrollTop < offsetMenu[0].value) {
+				setli(0)
+				return
+			}
+			if (scrollTop > offsetMenu[offsetMenu.length - 1].value) {
+				setli(offsetMenu.length - 1)
+				return
+			}
+			for (var i = 0; i < offsetMenu.length; i++) {
+				var li = offsetMenu[i]
+				var value = li.value;
+				if (scrollTop > value && scrollTop < offsetMenu[i + 1].value) {
+					setli(i)
+				}
+			}
+		}
+
+		function setli(index) {
+			if(preIndex !== index && menuli[preIndex]){
+				//移除上一个
+				removeli(preIndex)
+			}
+			if(currIndex != index){
+				menuli[index][0].firstChild.style.color = '#FF3300'
+				currIndex = index
+		    }
+			preIndex = index;
+		}
+
+		function removeli(index) {
+			menuli[index][0].firstChild.style.color = ''
+		}
+
+		$(window).scroll(function(event) {
+			setMenu();
+		});
+		setMenu();
+	})();
+
+
+	(function($) {
+		$.scrollUp = function(options) {
+			var settings = {
+				scrollName: 'scrollUp',
+				topDistance: '300',
+				topSpeed: 300,
+				animation: 'fade',
+				animationInSpeed: 200,
+				animationOutSpeed: 200,
+				scrollText: '回到顶部',
+				activeOverlay: false
+			};
+			if (options) {
+				var settings = $.extend(settings, options);
+			}
+			var sn = '#' + settings.scrollName,
+				an = settings.animation,
+				os = settings.animationOutSpeed,
+				is = settings.animationInSpeed,
+				td = settings.topDistance,
+				st = settings.scrollText,
+				ts = settings.topSpeed,
+				ao = settings.activeOverlay;
+			$('<a/>', {
+				id: settings.scrollName,
+				href: '#top',
+				title: st
+					/*text: st*/
+			}).appendTo('body');
+			$(sn).css({
+				'display': 'none',
+				'position': 'fixed',
+				'z-index': '2147483647'
+			})
+			if (ao) {
+				$("body").append("<div id='" + settings.scrollName + "-active'></div>");
+				$(sn + "-active").css({
+					'position': 'absolute',
+					'top': td + 'px',
+					'width': '100%',
+					'border-top': '1px dotted ' + ao,
+					'z-index': '2147483647'
+				})
+			}
+			$(window).scroll(function() {
+				if (an === "fade") {
+					$(($(window).scrollTop() > td) ? $(sn).fadeIn(is) : $(sn).fadeOut(os));
+				} else if (an === "slide") {
+					$(($(window).scrollTop() > td) ? $(sn).slideDown(is) : $(sn).slideUp(os));
+				} else {
+					$(($(window).scrollTop() > td) ? $(sn).show(0) : $(sn).hide(0));
+				}
+			});
+			$(sn).click(function(event) {
+				$('html, body').animate({
+					scrollTop: 0
+				}, ts);
+				return false;
+			});
+		};
+	}(jQuery));
+
+	$("#post-up").on("click", function() {
+		$("#div_digg .diggit").click();
+	})
+
+	$.scrollUp();
+
+
+	setTimeout(function() {
+		///////////////
+		//不能推荐自己的内容 //
+		///////////////
+		var diggit = $('.diggit')
+		var onclick = diggit.attr('onclick');
+		diggit.removeAttr("onclick")
+		diggit.click(function() {
+                     var digg_tips = $("#digg_tips").empty()
+                     digg_tips.show();
+                     (new Function("", "return " + onclick))()
+	             setTimeout(function() {
+		         digg_tips.empty()
+		     }, 2000)
+		})
+	}, 1000)
+
+
+	////////
+	//导航 //
+	////////
+	$("#menuclose").click(function() {
+		$("#menumain").hide();
+		$(this).hide();
+		$("#menuopen").show();
+		$(".menuAaron").animate({
+			'right': '-30'
+		})
+	})
+	$("#menuopen").click(function() {
+		$("#menumain").show()
+		$(this).hide();
+		$("#menuclose").show();
+		$(".menuAaron").animate({
+			'right': '20'
+		})
+	})
+
+	//////////
+	//删除随笔 //
+	//////////
+
+function catListTitle() {
+    var exist = true;
+    $(".catListTitle").each(function(index, ele) {
+        var text = $(ele).text();
+        if (/随笔档案/.test(text)) {
+            exist = true;
+            $(ele).remove();
+        }
+        if (/随笔分类/.test(text)) {
+             exist = true;
+            $(ele).find('span').remove()
+        }
+    })
+    return exist;
+}   
+var timer = null;
+function checkCatListTitle(){
+    //是否删除
+    var isDelete  = catListTitle(); 
+    if(isDelete){
+        timer = setTimeout(function(){
+            checkCatListTitle();
+        })
+    }else{
+        clearTimeout(timer);
+        timer = null;
+    }
+}
+checkCatListTitle();
+
+ 
+  //      $("#MyLinks1_MyHomeLink").text('Aaron主页')
+
+	showInfo.append('</br><div id="MySignature" style="display: block;"><div id="MySignature_title">如果您看完本篇文章感觉不错，请点击一下右下角的<strong><span style="color: #ff0000;">【<a id="post-up" href="javascript:void(0);">推荐</a>】</span></strong>来支持一下博主，谢谢！</div></br><p style="color:red;font-weight:bold;">如果是原创文章，转载请注明出处！！！</p><p id="aaronurl"></p>');
+            
+        $("#aaronurl").html("by Aaron：<a href="+  document.location.href +">" +document.location.href+ "<a>")
+ 
+	$("#blog-calendar").after('</br></br><h3 class="catListTitle">友情链接</h3>'+
+		'<strong><div class="youqing"><a href="http://www.cnblogs.com/yexiaochai/">叶小钗</a></strong></br>'+
+		'<strong><a href="http://www.cnblogs.com/jikey">豪情</a></strong></br>'+
+		'<strong><a href="http://www.cnblogs.com/vajoy/">vajoy</a></strong></br>'+
+		'<strong><a href="http://stylechen.com/">雨夜带刀</a></strong></br>'+
+		'<strong><a href="http://www.cnblogs.com/hustskyking/">Barret Lee</a></strong></br>'+
+                '<strong><a href="http://www.cnblogs.com/sharpxiajun/">夏天的森林</a></strong></br>'+
+                '<strong><a href="http://www.storagelab.org.cn/zhangdi/">张迪的blog</a></strong></br>'+
+		'</br>').after("</br><span style='color:red'>如果您觉得此文有帮助，可以打赏点钱给我支付宝chenwenkl@163.com<br/>或扫描二维码<span><br/><img src='http://images.cnblogs.com/cnblogs_com/aaronjs/642765/o_o_aex3ezbv03vx4nvq9e%20(1).png'>");
+
+
+
+});
+
+
+</script>
+<!--PageEndHtml Block End-->
+
+
+<a id="scrollUp" href="http://www.cnblogs.com/aaronjs/p/4283109.html#top" title="回到顶部"></a></body></html>
